@@ -1,3 +1,4 @@
+#include <sstream>
 #include <SFML/Network/Http.hpp>
 
 #include "Common/MsgHandler.h"
@@ -8,12 +9,8 @@
 
 void CUpdater::CheckUpdate()
 {
-	int m_newBranch = 0;
-	int m_newGit = 0;
-	std::string versionAndRevision;
-	std::string newVersion;
-
-	memcpy(&versionAndRevision, scm_desc_str, strlen(scm_desc_str) - 6);
+	std::string m_versionAndRevision;
+	std::string m_newVersion;
 
 	//net shit
 	sf::Http::Request req;
@@ -31,14 +28,15 @@ void CUpdater::CheckUpdate()
 	}
 	else
 	{
-		WxUtils::ShowErrorDialog("Failed to download.");
+		//Commented out because its annoy
+		//WxUtils::ShowErrorDialog("Failed to check latest version.");
 	}
 
 
 	//get the version from the json file and assign it to newVersion format: version-revision
 
-	if (strcmp(versionAndRevision.c_str(), newVersion.c_str()) != 0) {
-		if (AskYesNo("Current version: %s\nNew version: %s\n", versionAndRevision, newVersion) == 1) 
+	if (strcmp(m_versionAndRevision.c_str(), m_newVersion.c_str()) != 0) {
+		if (AskYesNo("Current version: %s\nNew version: %s\n", scm_desc_str, m_newVersion) == 1)
 		{
 			//if they press yes, update
 			CUpdater::Update();
