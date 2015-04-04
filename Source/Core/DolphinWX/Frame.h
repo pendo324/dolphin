@@ -344,6 +344,8 @@ private:
 
 	void OnNetPlay(wxCommandEvent& event);
 
+	void OnCheckUpdate(wxCommandEvent& event);
+
 	void OnShowCheatsWindow(wxCommandEvent& event);
 	void OnLoadWiiMenu(wxCommandEvent& event);
 	void OnInstallWAD(wxCommandEvent& event);

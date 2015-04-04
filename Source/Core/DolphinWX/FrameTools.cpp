@@ -84,6 +84,7 @@
 #include "DolphinWX/Debugger/BreakpointWindow.h"
 #include "DolphinWX/Debugger/CodeWindow.h"
 #include "DolphinWX/Debugger/WatchWindow.h"
+#include "DolphinWX/Updater.h"
 
 #include "InputCommon/ControllerInterface/ControllerInterface.h"
 
@@ -390,6 +391,7 @@ wxMenuBar* CFrame::CreateMenu()
 	helpMenu->Append(IDM_HELP_WEBSITE, _("&Website"));
 	helpMenu->Append(IDM_HELP_ONLINE_DOCS, _("Online &Documentation"));
 	helpMenu->Append(IDM_HELP_GITHUB, _("&GitHub Repository"));
+	helpMenu->Append(IDM_CHECK_UPDATE, ("Check for new version"));
 	helpMenu->AppendSeparator();
 	helpMenu->Append(wxID_ABOUT, _("&About..."));
 	menubar->Append(helpMenu, _("&Help"));
@@ -1595,6 +1597,11 @@ void CFrame::ConnectWiimote(int wm_idx, bool connect)
 void CFrame::OnConnectWiimote(wxCommandEvent& event)
 {
 	ConnectWiimote(event.GetId() - IDM_CONNECT_WIIMOTE1, !GetUsbPointer()->AccessWiiMote((event.GetId() - IDM_CONNECT_WIIMOTE1) | 0x100)->IsConnected());
+}
+
+void CFrame::OnCheckUpdate(wxCommandEvent& event) 
+{
+	CUpdater::CheckUpdate();
 }
 
 // Toggle fullscreen. In Windows the fullscreen mode is accomplished by expanding the m_Panel to cover

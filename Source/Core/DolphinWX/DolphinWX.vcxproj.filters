@@ -190,6 +190,9 @@
     <ClCompile Include="Config\AdvancedConfigPane.cpp">
       <Filter>GUI\Config</Filter>
     </ClCompile>
+    <ClCompile Include="Updater.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -344,6 +347,9 @@
     </ClInclude>
     <ClInclude Include="Config\AdvancedConfigPane.h">
       <Filter>GUI\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Updater.h">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
