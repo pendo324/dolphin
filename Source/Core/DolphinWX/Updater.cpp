@@ -27,7 +27,7 @@ void CUpdater::CheckUpdate()
 	if (sf::Http::Response::Ok == resp.getStatus())
 	{
 		//parse through the response body, gl m8
-		std::istringstream ss(resp.getBody);
+		std::istringstream ss(resp.getBody());
 	}
 	else
 	{
